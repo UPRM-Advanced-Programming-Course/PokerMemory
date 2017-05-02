@@ -1,0 +1,9 @@
+Rank	PlayerName	Score	Difficulty	 Time
+1		tito1 	    370     eas  Sat Oct 13 14:03:54 BOT 2012
+2		tito1 	    370     eas  Sat Oct 13 14:03:54 BOT 2012
+3		tito1 	    370     eas Mon Oct 15 11:52:27 BOT 2012
+4		to1 	    3996     asy  Sat Oct 13 14:03:54 BOT 2012
+5		to1 	    3996     asy  Sat Oct 13 14:03:54 BOT 2012
+6		to1 	    3996     asy Mon Oct 15 11:52:27 BOT 2012
+7		tito1 	    370     eas Mon Oct 15 11:52:27 BOT 2012
+8		to1 	    3996     asy Mon Oct 15 11:52:27 BOT 2012
