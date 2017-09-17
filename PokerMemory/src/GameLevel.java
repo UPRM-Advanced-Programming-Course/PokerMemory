@@ -159,14 +159,7 @@ public abstract class GameLevel implements ActionListener
 		return this.grid;
 	}
 
-	protected boolean  gameOver(){
-
-		for (int i =0; i< this.grid.size();i++)
-			if(!this.grid.get(i).isFaceUp()) return false;
-
-
-		return true;
-	}
+	protected abstract boolean  gameOver();
 
 	protected abstract String getMode() ;
 }

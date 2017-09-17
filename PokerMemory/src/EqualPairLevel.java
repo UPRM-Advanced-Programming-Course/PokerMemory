@@ -42,7 +42,15 @@ public class EqualPairLevel extends EasyLevel {
 		// TODO Auto-generated method stub
 		return "MediumMode";
 	}
+	
+	protected boolean  gameOver(){
 
+		for (int i =0; i< this.grid.size();i++)
+			if(!this.grid.get(i).isFaceUp()) return false;
+
+
+		return true;
+	}
 
 
 }

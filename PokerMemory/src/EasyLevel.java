@@ -89,6 +89,14 @@ public class EasyLevel extends GameLevel {
 		// TODO Auto-generated method stub
 		return "EasyMode";
 	}
+	
+	protected boolean  gameOver(){
+
+		for (int i =0; i< this.grid.size();i++)
+			if(!this.grid.get(i).isFaceUp()) return false;
+
+		return true;
+	}
 }
 
 
