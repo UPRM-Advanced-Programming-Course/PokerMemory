@@ -25,10 +25,9 @@ public class RankTrioLevel extends EqualPairLevel {
 	@Override
 	protected void makeDeck() {
 		// In Trio level the grid consists of distinct cards, no repetitions
-		ImageIcon cardIcon[] = this.loadCardIcons();
 
 		//back card
-		ImageIcon backIcon = cardIcon[this.getTotalCardsPerDeck()];
+		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
 
 		int cardsToAdd[] = new int[getRowsPerGrid() * getCardsPerRow()];
 		for(int i = 0; i < (getRowsPerGrid() * getCardsPerRow()); i++)
@@ -47,7 +46,7 @@ public class RankTrioLevel extends EqualPairLevel {
 			// make the card object and add it to the panel
 			String rank = cardNames[num].substring(0, 1);
 			String suit = cardNames[num].substring(1, 2);
-			this.getGrid().add( new Card(this, cardIcon[num], backIcon, num, rank, suit));
+			this.getGrid().add( new Card(this, this.getCardIcons()[num], backIcon, num, rank, suit));
 		}
 	}
 

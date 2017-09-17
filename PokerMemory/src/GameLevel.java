@@ -44,6 +44,8 @@ public abstract class GameLevel implements ActionListener
 	protected String suits[] = { "c", "d", "h", "s" };
 	protected String ranks[] = { "2", "3", "4", "5", "6", "7", "8", "9", "t", "j", "q", "k", "a" };
 
+	private ImageIcon cardIcons[];
+	
 	/**
 	 * Constructor
 	 *
@@ -57,6 +59,7 @@ public abstract class GameLevel implements ActionListener
 		this.turnDownTimer = new Timer(turnDownDelay, this);
 		this.turnDownTimer.setRepeats(false);
 		this.grid= new ArrayList<Card>();
+		this.loadCardIcons();
 	}
 
 	// Getters
@@ -67,9 +70,11 @@ public abstract class GameLevel implements ActionListener
 	public abstract String getMode() ;
 	public Vector<Card> getTurnedCardsBuffer() { return turnedCardsBuffer; }
 	public int getTotalCardsPerDeck()          { return TotalCardsPerDeck; }
-	public int getTotalUniqueCards()           { return totalUniqueCards; }
+	public int getTotalUniqueCards()           { return totalUniqueCards;  }
 	public TurnsTakenCounterLabel getTurnsTakenCounter() { return turnsTakenCounter; }
 	public Timer getTurnDownTimer()            { return turnDownTimer; }
+
+	public ImageIcon[] getCardIcons()          { return cardIcons;     }
 
 	// Setters
 	public void setTurnedCardsBuffer(Vector<Card> turnedCardsBuffer) {
@@ -107,6 +112,10 @@ public abstract class GameLevel implements ActionListener
 	public void setTurnDownTimer(Timer turnDownTimer) {
 		this.turnDownTimer = turnDownTimer;
 	}
+	
+	public void setCardIcons(ImageIcon[] cardIcons) {
+		this.cardIcons = cardIcons;
+	}
 
 	/**
 	 * Selects and adds the cards that will fill the grid according to the requirements of each level
@@ -114,18 +123,18 @@ public abstract class GameLevel implements ActionListener
 	 */
 	protected abstract void makeDeck();
 
-	protected ImageIcon[] loadCardIcons() {
+	private void loadCardIcons() {
 		// allocate array to store icons for unique cards, last icon is back icon
 
-		ImageIcon icon[] = new ImageIcon[TotalCardsPerDeck+1];
+		this.cardIcons = new ImageIcon[TotalCardsPerDeck+1];
 
 		for(int i = 0; i < TotalCardsPerDeck+1; i++ )
 		{
 			// make a new icon from a cardX.gif file
 			String fileName = "images/cards/" + cardNames[i] + ".gif";
-			icon[i] = new ImageIcon(fileName);
+			this.cardIcons[i] = new ImageIcon(fileName);
 			// unable to load icon
-			if(icon[i].getImageLoadStatus() == MediaTracker.ERRORED)
+			if(this.cardIcons[i].getImageLoadStatus() == MediaTracker.ERRORED)
 			{
 				// inform the user of the error and then quit
 				JOptionPane.showMessageDialog(this.mainFrame
@@ -134,7 +143,7 @@ public abstract class GameLevel implements ActionListener
 				System.exit(1);
 			}
 		}
-		return icon;
+		//return this.cardIcons;
 	}
 
 	protected  void randomizeIntArray(int[] a){

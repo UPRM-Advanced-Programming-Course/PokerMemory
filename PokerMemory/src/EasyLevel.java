@@ -26,8 +26,7 @@ public class EasyLevel extends GameLevel {
 	@Override
 	protected void makeDeck() {
 		// Creates a deck to fill the grid.  Each card appears twice in random places.
-		ImageIcon cardIcon[] = this.loadCardIcons();
-		ImageIcon backIcon = cardIcon[this.getTotalCardsPerDeck()];
+		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
 
 		// make an array of card numbers: 0, 0, 1, 1, 2, 2, ..., 7, 7
 		// duplicate the image in as many cards as the input imageClones
@@ -62,7 +61,7 @@ public class EasyLevel extends GameLevel {
 			// make the card object and add it to the panel
 			String rank = cardNames[num].substring(0, 1);
 			String suit = cardNames[num].substring(1, 2);
-			this.getGrid().add( new Card(this, cardIcon[num], backIcon, num, rank, suit));
+			this.getGrid().add( new Card(this, this.getCardIcons()[num], backIcon, num, rank, suit));
 		}
 	}
 
