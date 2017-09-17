@@ -58,27 +58,22 @@ public class EasyLevel extends GameLevel {
 	}
 
 	@Override
-	protected boolean addToTurnedCardsBuffer(Card card) {
-		// add the card to the list
-		this.turnedCardsBuffer.add(card);
-		// there are two cards
-		if(this.turnedCardsBuffer.size() == getCardsToTurnUp()-1) 
-		{
-			// Were are turning up the last card
-			// record the player's turn
-			this.turnsTakenCounter.increment();
-			this.turnedCardsBuffer.clear();
-			// In easy mode nothing to be done here
-		}
-		return true;
-	}
-
-	@Override
 	protected boolean turnUp(Card card) {
 		// the card may be turned
 		if(this.turnedCardsBuffer.size() < 1) 
 		{
-			return this.addToTurnedCardsBuffer(card);
+			// add the card to the list
+			this.turnedCardsBuffer.add(card);
+			// there are two cards
+			if(this.turnedCardsBuffer.size() == getCardsToTurnUp()-1) 
+			{
+				// Were are turning up the last card
+				// record the player's turn
+				this.turnsTakenCounter.increment();
+				this.turnedCardsBuffer.clear();
+				// In easy mode nothing to be done here
+			}
+			return true;
 		}
 		// there are already the number of EasyMode (two face up cards) in the turnedCardsBuffer
 		return false;

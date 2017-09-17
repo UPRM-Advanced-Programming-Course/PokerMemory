@@ -114,14 +114,6 @@ public abstract class GameLevel implements ActionListener
 	}
 
 	/**
-	 * Adds the card to the list, decides if cards should be left face up, may accumulate score
-	 *
-	 * @param card the new card to be added
-	 * @return true
-	 */
-	protected abstract boolean addToTurnedCardsBuffer(Card card);
-
-	/**
 	 * The specified card wants to turn, add if currently less than 2 cards
 	 *
 	 * @param card the Card object that wants to turn
