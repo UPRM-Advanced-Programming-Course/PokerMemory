@@ -62,15 +62,17 @@ public abstract class GameLevel implements ActionListener
 		this.grid= new ArrayList<Card>();
 	}
 
-	protected int getCardsToTurnUp() { return cardsToTurnUp; }
-	protected int getCardsPerRow()   { return cardsPerRow;   }
-	protected int getRowsPerGrid()   { return rowsPerGrid;   }
-
+	// Getters
+	protected int getCardsToTurnUp()    { return cardsToTurnUp; }
+	protected int getCardsPerRow()      { return cardsPerRow;   }
+	protected int getRowsPerGrid()      { return rowsPerGrid;   }
+	protected ArrayList<Card> getGrid() { return this.grid; }
+	protected abstract String getMode() ;
+	
 	/**
 	 * Selects and adds the cards that will fill the grid according to the requirements of each level
 	 *
 	 */
-
 	protected abstract void makeDeck();
 
 	protected ImageIcon[] loadCardIcons() {
@@ -119,7 +121,6 @@ public abstract class GameLevel implements ActionListener
 	 */
 	protected abstract boolean addToTurnedCardsBuffer(Card card);
 
-
 	/**
 	 * The specified card wants to turn, add if currently less than 2 cards
 	 *
@@ -154,12 +155,7 @@ public abstract class GameLevel implements ActionListener
 		// flip face down the cards
 		this.turnedCardsBuffer.clear();
 	}
-
-	protected ArrayList<Card> getGrid() {
-		return this.grid;
-	}
-
+	
 	protected abstract boolean  gameOver();
 
-	protected abstract String getMode() ;
 }
