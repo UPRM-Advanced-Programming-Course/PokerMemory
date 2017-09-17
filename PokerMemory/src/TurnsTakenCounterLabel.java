@@ -1,13 +1,10 @@
 /**
- * This class inherits from JLabel and implements the turn counter widget.
+ * Inherits from JLabel and implements the turn counter widget.
  *
- * Assignment: MP2
- * Class: CS 340, Fall 2005
- * TA: Nitin Jindal
- * System: jEdit, jdk-1.5.0.4, Windows XP
- * @author Michael Leonhard (CS account mleonhar)
- * @version 22 Sep 2005
-*/
+ * @author Michael Leonhard (Original Author)
+ * @author Modified by Bienvenido Vélez (UPRM)
+ * @version Sept 2017
+ */
 
 import javax.swing.JLabel;
 

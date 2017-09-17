@@ -1,3 +1,11 @@
+/**
+ * Stores Memory game frame and its components
+ *
+ * @author Michael Leonhard (Original Author)
+ * @author Modified by Bienvenido Vélez (UPRM)
+ * @version Sept 2017
+ */
+
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

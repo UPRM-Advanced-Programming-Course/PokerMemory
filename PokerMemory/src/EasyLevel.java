@@ -1,3 +1,12 @@
+/**
+ * Stores currently turned cards
+ * also handles turning cards back down after a delay.
+ *
+ * @author Michael Leonhard (Original Author)
+ * @author Modified by Bienvenido Vélez (UPRM)
+ * @version Sept 2017
+ */
+
 import java.util.Random;
 
 import javax.swing.ImageIcon;

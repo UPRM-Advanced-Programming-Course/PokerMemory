@@ -1,3 +1,12 @@
+/**
+ * Stores currently turned cards, allows only two cards to be uncovered on each turn
+ * Also handles turning cards back down after a delay if cards are different
+ *
+ * @author Michael Leonhard (Original Author)
+ * @author Modified by Bienvenido Vélez (UPRM)
+ * @version Sept 2017
+ */
+
 import javax.swing.JFrame;
 
 public class EqualPairLevel extends EasyLevel {

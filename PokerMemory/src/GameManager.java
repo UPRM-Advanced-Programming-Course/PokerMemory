@@ -1,3 +1,11 @@
+/**
+ * Main class for Memory game
+ *
+ * @author Michael Leonhard (Original Author)
+ * @author Modified by Bienvenido Vélez (UPRM)
+ * @version Sept 2017
+ */
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

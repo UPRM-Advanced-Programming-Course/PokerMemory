@@ -1,3 +1,12 @@
+/**
+ * Stores currently turned cards, allows only three cards to be uncovered on each turn
+ * Also handles turning cards back down after a delay if cards have different ranks
+ *
+ * @author Michael Leonhard (Original Author)
+ * @author Modified by Bienvenido Vélez (UPRM)
+ * @version Sept 2017
+ */
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
