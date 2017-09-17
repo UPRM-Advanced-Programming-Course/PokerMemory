@@ -170,16 +170,6 @@ public abstract class GameLevel implements ActionListener
 	protected abstract boolean turnUp(Card card);
 
 	/**
-	 * Remove the specified card from the buffer.
-	 *
-	 * @param card the Card object to be removed from the buffer of turned cards
-	 */
-	public void removeFromBuffer(Card card)
-	{
-		this.turnedCardsBuffer.remove(card);
-	}
-
-	/**
 	 * Invoked when timer event occurs, turns non-matching cards down
 	 *
 	 * @param e the timer event information
