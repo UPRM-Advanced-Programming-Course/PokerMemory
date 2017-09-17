@@ -123,6 +123,39 @@ public abstract class GameLevel implements ActionListener
 	 */
 	protected abstract void makeDeck();
 
+	/**
+	 * The specified card wants to turn, add if currently less than 2 cards
+	 *
+	 * @param card the Card object that wants to turn
+	 * @return true if the card is allowed to turn, otherwise false
+	 */
+	protected abstract boolean turnUp(Card card);
+
+	/**
+	 * Invoked when timer event occurs, turns non-matching cards down
+	 *
+	 * @param e the timer event information
+	 */
+	public void actionPerformed(ActionEvent e)
+	{
+		// turn each card back down
+		for(int i = 0; i < this.turnedCardsBuffer.size(); i++ )
+		{
+			Card card = (Card)this.turnedCardsBuffer.get(i);
+			card.turnDown();
+		}
+		// flip face down the cards
+		this.turnedCardsBuffer.clear();
+	}
+	
+	/**
+	 * Returns true iff game is over. False otherwise.
+	 * 
+	 */
+	protected abstract boolean  gameOver();
+	
+	// Utility methods potentially useful in subclasses
+	
 	private void loadCardIcons() {
 		// allocate array to store icons for unique cards, last icon is back icon
 
@@ -160,32 +193,5 @@ public abstract class GameLevel implements ActionListener
 			a[i] = t;
 		}
 	}
-
-	/**
-	 * The specified card wants to turn, add if currently less than 2 cards
-	 *
-	 * @param card the Card object that wants to turn
-	 * @return true if the card is allowed to turn, otherwise false
-	 */
-	protected abstract boolean turnUp(Card card);
-
-	/**
-	 * Invoked when timer event occurs, turns non-matching cards down
-	 *
-	 * @param e the timer event information
-	 */
-	public void actionPerformed(ActionEvent e)
-	{
-		// turn each card back down
-		for(int i = 0; i < this.turnedCardsBuffer.size(); i++ )
-		{
-			Card card = (Card)this.turnedCardsBuffer.get(i);
-			card.turnDown();
-		}
-		// flip face down the cards
-		this.turnedCardsBuffer.clear();
-	}
-
-	protected abstract boolean  gameOver();
 
 }
