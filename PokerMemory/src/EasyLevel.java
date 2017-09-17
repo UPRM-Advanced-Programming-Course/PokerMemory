@@ -25,13 +25,13 @@ public class EasyLevel extends GameLevel {
 
 	@Override
 	protected void makeDeck() {
-		// Creates a deck to fill the grid.  Each card appears twice in random places.
+		// Creates a deck to fill the 4x4 grid with all cards different from each other
 		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
 
 		// make an array of card numbers: 0, 0, 1, 1, 2, 2, ..., 7, 7
 		// duplicate the image in as many cards as the input imageClones
 		int totalCardsInGrid = getRowsPerGrid() * getCardsPerRow();
-		int totalUniqueCards = totalCardsInGrid/2;
+		int totalUniqueCards = totalCardsInGrid;
 
 		// Generate one distinct random card number for each unique card	
 		int cardsToAdd[] = new int[totalCardsInGrid];
@@ -44,8 +44,7 @@ public class EasyLevel extends GameLevel {
 			int nextCardNo = rand.nextInt(getTotalCardsPerDeck());
 			if (!cardChosen[nextCardNo]) {
 				cardChosen[nextCardNo] = true;
-				cardsToAdd[2*chosenCount] = nextCardNo;
-				cardsToAdd[2*chosenCount + 1] = nextCardNo;
+				cardsToAdd[chosenCount] = nextCardNo;
 				chosenCount++;
 			}
 		}
@@ -67,23 +66,13 @@ public class EasyLevel extends GameLevel {
 
 	@Override
 	protected boolean turnUp(Card card) {
-		// the card may be turned
-		if(this.getTurnedCardsBuffer().size() < 1) 
+		// Turn up any card until all are turned up
+		if(this.getTurnedCardsBuffer().size() < this.getTotalUniqueCards()) 
 		{
-			// add the card to the list
 			this.getTurnedCardsBuffer().add(card);
-			// there are two cards
-			if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp()-1) 
-			{
-				// Were are turning up the last card
-				// record the player's turn
-				this.getTurnsTakenCounter().increment();
-				this.getTurnedCardsBuffer().clear();
-				// In easy mode nothing to be done here
-			}
 			return true;
 		}
-		// there are already the number of EasyMode (two face up cards) in the turnedCardsBuffer
+		// All cards are turned up
 		return false;
 	}
 
@@ -92,9 +81,9 @@ public class EasyLevel extends GameLevel {
 		// TODO Auto-generated method stub
 		return "EasyMode";
 	}
-	
-	protected boolean  gameOver(){
 
+	protected boolean  gameOver()
+	{
 		for (int i =0; i< this.getGrid().size();i++)
 			if(!this.getGrid().get(i).isFaceUp()) return false;
 
