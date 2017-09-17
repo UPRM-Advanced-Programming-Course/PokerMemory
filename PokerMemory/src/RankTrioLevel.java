@@ -7,10 +7,10 @@ public class RankTrioLevel extends EqualPairLevel {
 
 	protected RankTrioLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
 		super(validTurnTime, mainFrame);
-		super.turnsTakenCounter.setDifficultyModeLabel("Trio Level");
-		cardsToTurnUp = 3;
-		cardsPerRow = 10;
-		rowsPerGrid = 5;
+		this.getTurnsTakenCounter().setDifficultyModeLabel("Trio Level");
+		this.setCardsToTurnUp(3);
+		this.setCardsPerRow(10);
+		this.setRowsPerGrid(5);
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class RankTrioLevel extends EqualPairLevel {
 		ImageIcon cardIcon[] = this.loadCardIcons();
 
 		//back card
-		ImageIcon backIcon = cardIcon[TotalCardsPerDeck];
+		ImageIcon backIcon = cardIcon[this.getTotalCardsPerDeck()];
 
 		int cardsToAdd[] = new int[getRowsPerGrid() * getCardsPerRow()];
 		for(int i = 0; i < (getRowsPerGrid() * getCardsPerRow()); i++)
@@ -38,33 +38,33 @@ public class RankTrioLevel extends EqualPairLevel {
 			// make the card object and add it to the panel
 			String rank = cardNames[num].substring(0, 1);
 			String suit = cardNames[num].substring(1, 2);
-			this.grid.add( new Card(this, cardIcon[num], backIcon, num, rank, suit));
+			this.getGrid().add( new Card(this, cardIcon[num], backIcon, num, rank, suit));
 		}
 	}
 
 	@Override
 	protected boolean turnUp(Card card) {
 		// the card may be turned
-		if(this.turnedCardsBuffer.size() < getCardsToTurnUp()) 
+		if(this.getTurnedCardsBuffer().size() < getCardsToTurnUp()) 
 		{
 			// add the card to the list
-			this.turnedCardsBuffer.add(card);
-			if(this.turnedCardsBuffer.size() == getCardsToTurnUp())
+			this.getTurnedCardsBuffer().add(card);
+			if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp())
 			{
 				// We are uncovering the last card in this turn
 				// Record the player's turn
-				this.turnsTakenCounter.increment();
+				this.getTurnsTakenCounter().increment();
 				// get the other card (which was already turned up)
-				Card otherCard1 = (Card) this.turnedCardsBuffer.get(0);
-				Card otherCard2 = (Card) this.turnedCardsBuffer.get(1);
+				Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
+				Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
 				if((card.getRank().equals(otherCard1.getRank())) && (card.getRank().equals(otherCard2.getRank()))) {
 					// Three cards match, so remove them from the list (they will remain face up)
-					this.turnedCardsBuffer.clear();
+					this.getTurnedCardsBuffer().clear();
 				}
 				else
 				{
 					// The cards do not match, so start the timer to turn them down
-					this.turnDownTimer.start();
+					this.getTurnDownTimer().start();
 				}
 			}
 			return true;

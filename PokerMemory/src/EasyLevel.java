@@ -7,18 +7,18 @@ public class EasyLevel extends GameLevel {
 
 	protected EasyLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
 		super(validTurnTime, 2, mainFrame);
-		this.turnsTakenCounter.setDifficultyModeLabel("Easy Level");
-		this.cardsPerRow = 4;
-		this.rowsPerGrid = 4;
-		this.cardsToTurnUp = 2;
-		this.totalUniqueCards = rowsPerGrid * cardsPerRow;
+		this.getTurnsTakenCounter().setDifficultyModeLabel("Easy Level");
+		this.setCardsPerRow(4);
+		this.setRowsPerGrid(4);
+		this.setCardsToTurnUp(2);
+		this.setTotalUniqueCards(this.getRowsPerGrid() * this.getCardsPerRow());
 	}
 
 	@Override
 	protected void makeDeck() {
 		// Creates a deck to fill the grid.  Each card appears twice in random places.
 		ImageIcon cardIcon[] = this.loadCardIcons();
-		ImageIcon backIcon = cardIcon[TotalCardsPerDeck];
+		ImageIcon backIcon = cardIcon[this.getTotalCardsPerDeck()];
 
 		// make an array of card numbers: 0, 0, 1, 1, 2, 2, ..., 7, 7
 		// duplicate the image in as many cards as the input imageClones
@@ -27,13 +27,13 @@ public class EasyLevel extends GameLevel {
 
 		// Generate one distinct random card number for each unique card	
 		int cardsToAdd[] = new int[totalCardsInGrid];
-		boolean cardChosen[] = new boolean[TotalCardsPerDeck];
+		boolean cardChosen[] = new boolean[getTotalCardsPerDeck()];
 
 		int chosenCount = 0;
 		Random rand = new Random();
 		while (chosenCount < totalUniqueCards)
 		{
-			int nextCardNo = rand.nextInt(TotalCardsPerDeck);
+			int nextCardNo = rand.nextInt(getTotalCardsPerDeck());
 			if (!cardChosen[nextCardNo]) {
 				cardChosen[nextCardNo] = true;
 				cardsToAdd[2*chosenCount] = nextCardNo;
@@ -53,24 +53,24 @@ public class EasyLevel extends GameLevel {
 			// make the card object and add it to the panel
 			String rank = cardNames[num].substring(0, 1);
 			String suit = cardNames[num].substring(1, 2);
-			this.grid.add( new Card(this, cardIcon[num], backIcon, num, rank, suit));
+			this.getGrid().add( new Card(this, cardIcon[num], backIcon, num, rank, suit));
 		}
 	}
 
 	@Override
 	protected boolean turnUp(Card card) {
 		// the card may be turned
-		if(this.turnedCardsBuffer.size() < 1) 
+		if(this.getTurnedCardsBuffer().size() < 1) 
 		{
 			// add the card to the list
-			this.turnedCardsBuffer.add(card);
+			this.getTurnedCardsBuffer().add(card);
 			// there are two cards
-			if(this.turnedCardsBuffer.size() == getCardsToTurnUp()-1) 
+			if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp()-1) 
 			{
 				// Were are turning up the last card
 				// record the player's turn
-				this.turnsTakenCounter.increment();
-				this.turnedCardsBuffer.clear();
+				this.getTurnsTakenCounter().increment();
+				this.getTurnedCardsBuffer().clear();
 				// In easy mode nothing to be done here
 			}
 			return true;
@@ -80,15 +80,15 @@ public class EasyLevel extends GameLevel {
 	}
 
 	@Override
-	protected String getMode() {
+	public String getMode() {
 		// TODO Auto-generated method stub
 		return "EasyMode";
 	}
 	
 	protected boolean  gameOver(){
 
-		for (int i =0; i< this.grid.size();i++)
-			if(!this.grid.get(i).isFaceUp()) return false;
+		for (int i =0; i< this.getGrid().size();i++)
+			if(!this.getGrid().get(i).isFaceUp()) return false;
 
 		return true;
 	}

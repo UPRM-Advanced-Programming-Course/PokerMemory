@@ -24,24 +24,24 @@ import javax.swing.Timer;
 
 public abstract class GameLevel implements ActionListener 
 {
-	protected Vector<Card> turnedCardsBuffer;					// List of cards turned up in current turn
-	protected final int TotalCardsPerDeck = 52;
-	protected TurnsTakenCounterLabel turnsTakenCounter;			// Turn counter is incremented at every card turned up
-	protected Timer turnDownTimer;   							// Timer is used to make a delay
-	protected int turnDownDelay = 2000;							// Milliseconds to leave cards up before turning them back down
-	protected ArrayList<Card> grid;								// The list of cards in the deck in row major order
-	protected JFrame mainFrame;									// The main frame holding the cards
-	protected int cardsPerRow = 4;								// Number of cards per row in grid
-	protected int rowsPerGrid = 16;								// Number of card rows in Grid
-	protected int cardsToTurnUp = 2;							// Number of cards to turn up on each turn
-	protected int totalUniqueCards = rowsPerGrid * cardsPerRow;	// Total number of cards in the grid
+	private Vector<Card> turnedCardsBuffer;					// List of cards turned up in current turn
+	private int TotalCardsPerDeck = 52;
+	private TurnsTakenCounterLabel turnsTakenCounter;	    // Turn counter is incremented at every card turned up
+	private Timer turnDownTimer;   							// Timer is used to make a delay
+	private int turnDownDelay = 2000;						// Milliseconds to leave cards up before turning them back down
+	private ArrayList<Card> grid;							// The list of cards in the deck in row major order
+	private JFrame mainFrame;								// The main frame holding the cards
+	private int cardsPerRow = 4;								// Number of cards per row in grid
+	private int rowsPerGrid = 16;							// Number of card rows in Grid
+	private int cardsToTurnUp = 2;							// Number of cards to turn up on each turn
+	private int totalUniqueCards = rowsPerGrid * cardsPerRow;	// Total number of cards in the grid
 
 	protected String cardNames[] = 
 		{   "2c", "2d", "2h", "2s", "3c", "3d", "3h", "3s", "4c", "4d", "4h", "4s",
-			"5c", "5d", "5h", "5s", "6c", "6d", "6h", "6s", "7c", "7d", "7h", "7s",
-			"8c", "8d", "8h", "8s", "9c", "9d", "9h", "9s", "tc", "td", "th", "ts",
-			"jc", "jd", "jh", "js", "qc", "qd", "qh", "qs", "kc", "kd", "kh", "ks",
-			"ac", "ad", "ah", "as", "back"
+				"5c", "5d", "5h", "5s", "6c", "6d", "6h", "6s", "7c", "7d", "7h", "7s",
+				"8c", "8d", "8h", "8s", "9c", "9d", "9h", "9s", "tc", "td", "th", "ts",
+				"jc", "jd", "jh", "js", "qc", "qd", "qh", "qs", "kc", "kd", "kh", "ks",
+				"ac", "ad", "ah", "as", "back"
 		};
 
 	protected String suits[] = { "c", "d", "h", "s" };
@@ -63,12 +63,54 @@ public abstract class GameLevel implements ActionListener
 	}
 
 	// Getters
-	protected int getCardsToTurnUp()    { return cardsToTurnUp; }
-	protected int getCardsPerRow()      { return cardsPerRow;   }
-	protected int getRowsPerGrid()      { return rowsPerGrid;   }
-	protected ArrayList<Card> getGrid() { return this.grid; }
-	protected abstract String getMode() ;
+	public int getCardsToTurnUp()              { return cardsToTurnUp; }
+	public int getCardsPerRow()                { return cardsPerRow;   }
+	public int getRowsPerGrid()                { return rowsPerGrid;   }
+	public ArrayList<Card> getGrid()           { return this.grid;     }
+	public abstract String getMode() ;
+	public Vector<Card> getTurnedCardsBuffer() { return turnedCardsBuffer; }
+	public int getTotalCardsPerDeck()          { return TotalCardsPerDeck; }
+	public int getTotalUniqueCards()           { return totalUniqueCards; }
+	public TurnsTakenCounterLabel getTurnsTakenCounter() { return turnsTakenCounter; }
+	public Timer getTurnDownTimer()            { return turnDownTimer; }
+
+	// Setters
+	public void setTurnedCardsBuffer(Vector<Card> turnedCardsBuffer) {
+		this.turnedCardsBuffer = turnedCardsBuffer;
+	}
+
+	public void setCardsPerRow(int cardsPerRow) {
+		this.cardsPerRow = cardsPerRow;
+	}
+
+	public void setRowsPerGrid(int rowsPerGrid) {
+		this.rowsPerGrid = rowsPerGrid;
+	}
+
+	public void setCardsToTurnUp(int cardsToTurnUp) {
+		this.cardsToTurnUp = cardsToTurnUp;
+	}
+
+	public void setTotalUniqueCards(int totalUniqueCards) {
+		this.totalUniqueCards = totalUniqueCards;
+	}
+
+	public void setTotalCardsPerDeck(int totalCardsPerDeck) {
+		TotalCardsPerDeck = totalCardsPerDeck;
+	}
+
+	public void setGrid(ArrayList<Card> grid) { 
+		this.grid = grid;
+	}
+
+	public void setTurnsTakenCounter(TurnsTakenCounterLabel turnsTakenCounter) {
+		this.turnsTakenCounter = turnsTakenCounter;
+	}
 	
+	public void setTurnDownTimer(Timer turnDownTimer) {
+		this.turnDownTimer = turnDownTimer;
+	}
+
 	/**
 	 * Selects and adds the cards that will fill the grid according to the requirements of each level
 	 *
@@ -147,7 +189,7 @@ public abstract class GameLevel implements ActionListener
 		// flip face down the cards
 		this.turnedCardsBuffer.clear();
 	}
-	
+
 	protected abstract boolean  gameOver();
 
 }

@@ -4,27 +4,27 @@ public class EqualPairLevel extends EasyLevel {
 
 	protected EqualPairLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
 		super(validTurnTime, mainFrame);
-		super.turnsTakenCounter.setDifficultyModeLabel("Medium Level");
+		super.getTurnsTakenCounter().setDifficultyModeLabel("Medium Level");
 	}
 
 	@Override
 	protected boolean turnUp(Card card) {
 		// the card may be turned
-		if(this.turnedCardsBuffer.size() < getCardsToTurnUp()) 
+		if(this.getTurnedCardsBuffer().size() < getCardsToTurnUp()) 
 		{
-			this.turnedCardsBuffer.add(card);
-			if(this.turnedCardsBuffer.size() == getCardsToTurnUp())
+			this.getTurnedCardsBuffer().add(card);
+			if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp())
 			{
 				// there are two cards faced up
 				// record the player's turn
-				this.turnsTakenCounter.increment();
+				this.getTurnsTakenCounter().increment();
 				// get the other card (which was already turned up)
-				Card otherCard = (Card) this.turnedCardsBuffer.get(0);
+				Card otherCard = (Card) this.getTurnedCardsBuffer().get(0);
 				// the cards match, so remove them from the list (they will remain face up)
 				if( otherCard.getNum() == card.getNum())
-					this.turnedCardsBuffer.clear();
+					this.getTurnedCardsBuffer().clear();
 				// the cards do not match, so start the timer to turn them down
-				else this.turnDownTimer.start();
+				else this.getTurnDownTimer().start();
 			}
 			return true;
 		}
@@ -33,15 +33,15 @@ public class EqualPairLevel extends EasyLevel {
 	}
 
 	@Override
-	protected String getMode() {
+	public String getMode() {
 		// TODO Auto-generated method stub
 		return "MediumMode";
 	}
 
 	protected boolean  gameOver(){
 
-		for (int i =0; i< this.grid.size();i++)
-			if(!this.grid.get(i).isFaceUp()) return false;
+		for (int i =0; i< this.getGrid().size();i++)
+			if(!this.getGrid().get(i).isFaceUp()) return false;
 
 
 		return true;
