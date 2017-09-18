@@ -152,7 +152,7 @@ public abstract class GameLevel implements ActionListener
 	 * Returns true iff game is over. False otherwise.
 	 * 
 	 */
-	protected abstract boolean  gameOver();
+	protected abstract boolean  isGameOver();
 	
 	// Utility methods potentially useful in subclasses
 	

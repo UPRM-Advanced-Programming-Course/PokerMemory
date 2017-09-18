@@ -165,7 +165,7 @@ public class MemoryGame implements ActionListener {
 	}
 
 	public boolean gameOver() throws FileNotFoundException, InterruptedException{
-		return difficulty.gameOver();
+		return difficulty.isGameOver();
 	}
 
 	/**

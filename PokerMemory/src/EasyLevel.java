@@ -81,8 +81,9 @@ public class EasyLevel extends GameLevel {
 		// TODO Auto-generated method stub
 		return "EasyMode";
 	}
-
-	protected boolean  gameOver()
+	
+	@Override
+	protected boolean  isGameOver()
 	{
 		for (int i =0; i< this.getGrid().size();i++)
 			if(!this.getGrid().get(i).isFaceUp()) return false;

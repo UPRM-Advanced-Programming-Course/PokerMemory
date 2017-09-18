@@ -9,6 +9,8 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 
 public class GameManager {
 
@@ -20,9 +22,18 @@ public class GameManager {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		// make an instance of the main game class
-		MemoryGame instance = new MemoryGame();
-		instance.newGame("easy");
-		
-	}
 
+		int playMore = 2;
+		while (playMore != 1) {
+			MemoryGame instance = new MemoryGame();
+			instance.newGame("easy");
+
+			while(!instance.gameOver()) {
+				Thread.sleep(500);
+			}
+			playMore = JOptionPane.showConfirmDialog(null, "Play Again?", "GAME OVER!!!", JOptionPane.YES_NO_OPTION);
+			System.out.println(playMore+"");
+		}
+		System.exit(0);
+	}
 }
