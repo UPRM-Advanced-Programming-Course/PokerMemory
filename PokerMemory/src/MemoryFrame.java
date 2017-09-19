@@ -90,7 +90,7 @@ public class MemoryFrame extends JFrame {
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		
-		JMenuItem mntmHowToPlay = new JMenuItem("How to Play");
+		JMenuItem mntmHowToPlay = new JMenuItem("How To Play");
 		mntmHowToPlay.addActionListener(menuHandler);
 		mnHelp.add(mntmHowToPlay);
 		
