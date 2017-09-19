@@ -67,8 +67,10 @@ public class EasyLevel extends GameLevel {
 	@Override
 	protected boolean turnUp(Card card) {
 		// Turn up any card until all are turned up
+		this.getMainFrame().getTurnCounterLabel().setText("5");
 		if(this.getTurnedCardsBuffer().size() < this.getTotalUniqueCards()) 
 		{
+			this.getTurnsTakenCounter().increment();
 			this.getTurnedCardsBuffer().add(card);
 			return true;
 		}

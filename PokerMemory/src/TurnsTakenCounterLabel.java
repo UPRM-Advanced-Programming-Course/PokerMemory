@@ -17,16 +17,17 @@ public class TurnsTakenCounterLabel extends JLabel
 	
 	// data fields
 	private int numTurns = 0;
-	private  String DESCRIPTION;
+	//private  String DESCRIPTION;
 	
 	public TurnsTakenCounterLabel()
 	{
 		super();
 		reset();
 	}
+	
 	public void setDifficultyModeLabel(String difficultyMode){
-		DESCRIPTION = "Turns Taken: ";
-		setHorizontalTextPosition(JLabel.LEFT);
+		//DESCRIPTION = "Turns Taken: ";
+		//setHorizontalTextPosition(JLabel.LEFT);
 	}
 	
 	public int getNumOfTurns(){
@@ -38,14 +39,14 @@ public class TurnsTakenCounterLabel extends JLabel
 	*/
 	private void update()
 	{
-		setText(DESCRIPTION + Integer.toString(this.numTurns));
-		setHorizontalTextPosition(JLabel.LEFT);
+		this.setText("foo " + this.getNumOfTurns());
+		System.out.println(this.getText() + " Clicks kk");
+		//setHorizontalTextPosition(JLabel.LEFT);
 	}
 	
 	/**
 	 * Default constructor, starts counter at 0
 	*/
-
 	
 	/**
 	 * Increments the counter and updates the text label
@@ -62,6 +63,7 @@ public class TurnsTakenCounterLabel extends JLabel
 	public void reset()
 	{
 		this.numTurns = 0;
+		System.out.println("Reset called");
 		update();
 	}
 }

@@ -27,7 +27,7 @@ public abstract class GameLevel implements ActionListener
 	private Timer turnDownTimer;   							// Timer is used to make a delay
 	private int turnDownDelay = 2000;						// Milliseconds to leave cards up before turning them back down
 	private ArrayList<Card> grid;							// The list of cards in the deck in row major order
-	private JFrame mainFrame;								// The main frame holding the cards
+	private MemoryFrame mainFrame;								// The main frame holding the cards
 	private int cardsPerRow = 4;								// Number of cards per row in grid
 	private int rowsPerGrid = 16;							// Number of card rows in Grid
 	private int cardsToTurnUp = 2;							// Number of cards to turn up on each turn
@@ -53,9 +53,9 @@ public abstract class GameLevel implements ActionListener
 	 */
 	protected GameLevel(TurnsTakenCounterLabel counterLabel, int cardsToGuess, JFrame mainFrame)
 	{
-		this.turnsTakenCounter = counterLabel;
+		this.turnsTakenCounter = counterLabel; counterLabel.reset();
 		this.turnedCardsBuffer= new Vector<Card>(cardsToGuess);
-		this.mainFrame = mainFrame;
+		this.mainFrame = (MemoryFrame) mainFrame;
 		this.turnDownTimer = new Timer(turnDownDelay, this);
 		this.turnDownTimer.setRepeats(false);
 		this.grid= new ArrayList<Card>();
@@ -73,8 +73,8 @@ public abstract class GameLevel implements ActionListener
 	public int getTotalUniqueCards()           { return totalUniqueCards;  }
 	public TurnsTakenCounterLabel getTurnsTakenCounter() { return turnsTakenCounter; }
 	public Timer getTurnDownTimer()            { return turnDownTimer; }
-
 	public ImageIcon[] getCardIcons()          { return cardIcons;     }
+	public MemoryFrame getMainFrame() { return mainFrame; }
 
 	// Setters
 	public void setTurnedCardsBuffer(Vector<Card> turnedCardsBuffer) {
@@ -115,6 +115,10 @@ public abstract class GameLevel implements ActionListener
 	
 	public void setCardIcons(ImageIcon[] cardIcons) {
 		this.cardIcons = cardIcons;
+	}
+	
+	public void setMainFrame(JFrame mainFrame) {
+		this.mainFrame = (MemoryFrame) mainFrame;
 	}
 
 	/**
