@@ -23,20 +23,17 @@ public class GameManager {
 		// TODO Auto-generated method stub
 		// make an instance of the main game class
 
-		MemoryFrame instance = new MemoryFrame();
-		instance.newGame("easy");
-		
-//		int playMore = 2;
-//		while (playMore != 1) {
-//			MemoryFrame instance = new MemoryFrame();
-//			instance.newGame("easy");
-//
-//			while(!instance.gameOver()) {
-//				Thread.sleep(500);
-//			}
-//			playMore = JOptionPane.showConfirmDialog(null, "Play Again?", "GAME OVER!!!", JOptionPane.YES_NO_OPTION);
-//			System.out.println(playMore+"");
-//		}
-//		System.exit(0);
+		int playMore = 2;
+		while (playMore != 1) {
+			MemoryFrame instance = new MemoryFrame();
+			instance.newGame("easy");
+
+			while(!instance.gameOver()) {
+				Thread.sleep(500);
+			}
+			playMore = JOptionPane.showConfirmDialog(null, "Play Again?", "GAME OVER!!!", JOptionPane.YES_NO_OPTION);
+			System.out.println(playMore+"");
+		}
+		System.exit(0);
 	}
 }
