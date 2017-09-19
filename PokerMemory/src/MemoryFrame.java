@@ -168,8 +168,8 @@ public class MemoryFrame extends JFrame {
 	 */
 	public void newGame(String difficultyMode) throws IOException
 	{
-		// reset the turn counter to zero
-		this.turnCounterLabel = new TurnsTakenCounterLabel();
+		// Reset the turn counter label
+		this.turnCounterLabel.reset();
 
 		// make a new card field with cards, and add it to the window
 
@@ -194,9 +194,6 @@ public class MemoryFrame extends JFrame {
 		BorderLayout bl  = (BorderLayout) this.getContentPane().getLayout();
 		this.getContentPane().remove(bl.getLayoutComponent(BorderLayout.CENTER));
 		this.getContentPane().add(showCardDeck(), BorderLayout.CENTER);
-
-		// Reset the turn counter label
-		this.turnCounterLabel.reset();
 
 		// show the window (in case this is the first game)
 		this.setVisible(true);

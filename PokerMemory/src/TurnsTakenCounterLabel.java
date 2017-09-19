@@ -39,9 +39,7 @@ public class TurnsTakenCounterLabel extends JLabel
 	*/
 	private void update()
 	{
-		this.setText("foo " + this.getNumOfTurns());
-		System.out.println(this.getText() + " Clicks kk");
-		//setHorizontalTextPosition(JLabel.LEFT);
+		this.setText("" + this.getNumOfTurns());
 	}
 	
 	/**
@@ -63,7 +61,6 @@ public class TurnsTakenCounterLabel extends JLabel
 	public void reset()
 	{
 		this.numTurns = 0;
-		System.out.println("Reset called");
 		update();
 	}
 }
