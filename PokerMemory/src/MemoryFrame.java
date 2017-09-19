@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-import javax.swing.JButton;
 
 public class MemoryFrame extends JFrame {
 
@@ -29,6 +28,7 @@ public class MemoryFrame extends JFrame {
 	private TurnsTakenCounterLabel turnCounterLabel;
 	private GameLevel difficulty;
 	private JPanel centerGrid;
+	private JLabel levelDescriptionLabel;
 
 	/**
 	 * Launch the application.
@@ -64,8 +64,8 @@ public class MemoryFrame extends JFrame {
 				dprintln("actionPerformed " + e.getActionCommand());
 				try {
 					if(e.getActionCommand().equals("Easy Level")) newGame("easy");
-					else if(e.getActionCommand().equals("Equal Pair Level")) newGame("medium");
-					else if(e.getActionCommand().equals("Same Rank Trio Level")) newGame("trio");
+					else if(e.getActionCommand().equals("Equal Pair Level")) newGame("equalpair");
+					else if(e.getActionCommand().equals("Same Rank Trio Level")) newGame("ranktrio");
 					else if(e.getActionCommand().equals("How To Play")) showInstructions();
 					else if(e.getActionCommand().equals("About")) showAbout();
 					else if(e.getActionCommand().equals("Exit")) System.exit(0);
@@ -134,6 +134,12 @@ public class MemoryFrame extends JFrame {
 
 		Component horizontalGlue = Box.createHorizontalGlue();
 		panel_1.add(horizontalGlue);
+		
+		levelDescriptionLabel = new JLabel("New label");
+		panel_1.add(levelDescriptionLabel);
+		
+		Component horizontalGlue_1 = Box.createHorizontalGlue();
+		panel_1.add(horizontalGlue_1);
 
 		JLabel lblNewLabel_3 = new JLabel("Points:");
 		panel_1.add(lblNewLabel_3);
@@ -154,12 +160,20 @@ public class MemoryFrame extends JFrame {
 		return centerGrid;
 	}
 
+	public JLabel getLevelDescriptionLabel() {
+		return levelDescriptionLabel;
+	}
+
 	public void setTurnCounterLabel(TurnsTakenCounterLabel turnCounterLabel) {
 		this.turnCounterLabel = turnCounterLabel;
 	}
 
 	public void setCenterGrid(JPanel centerGrid) {
 		this.centerGrid = centerGrid;
+	}
+	
+	public void setLevelDescriptionLabel(JLabel levelDescriptionLabel) {
+		this.levelDescriptionLabel = levelDescriptionLabel;
 	}
 
 	/**
@@ -175,13 +189,16 @@ public class MemoryFrame extends JFrame {
 
 		if(difficultyMode.equalsIgnoreCase("easy")) {
 			this.difficulty = new EasyLevel(this.turnCounterLabel, this);
+			this.getLevelDescriptionLabel().setText("Easy Level");
 		}
-		else if(difficultyMode.equalsIgnoreCase("medium")){
+		else if(difficultyMode.equalsIgnoreCase("equalpair")){
 			this.difficulty = new EqualPairLevel(this.turnCounterLabel, this);
+			this.getLevelDescriptionLabel().setText("Equal Pair Level");
 		}
 
-		else if(difficultyMode.equalsIgnoreCase("trio")){
+		else if(difficultyMode.equalsIgnoreCase("ranktrio")){
 			this.difficulty = new RankTrioLevel(this.turnCounterLabel, this);
+			this.getLevelDescriptionLabel().setText("Same Rank Trio Level");
 		}
 
 		else {
