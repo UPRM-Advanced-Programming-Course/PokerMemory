@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class MemoryFrame extends JFrame {
 
+	private static final long serialVersionUID = -1779776750581169562L;
 	private static final boolean DEBUG = true;
 	private JPanel contentPane;
 	private TurnsTakenCounterLabel turnCounterLabel;

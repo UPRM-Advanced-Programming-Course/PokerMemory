@@ -63,18 +63,18 @@ public abstract class GameLevel implements ActionListener
 	}
 
 	// Getters
-	public int getCardsToTurnUp()              { return cardsToTurnUp; }
-	public int getCardsPerRow()                { return cardsPerRow;   }
-	public int getRowsPerGrid()                { return rowsPerGrid;   }
-	public ArrayList<Card> getGrid()           { return this.grid;     }
-	public abstract String getMode() ;
+	public int getCardsToTurnUp()              { return cardsToTurnUp;     }
+	public int getCardsPerRow()                { return cardsPerRow;       }
+	public int getRowsPerGrid()                { return rowsPerGrid;       }
+	public ArrayList<Card> getGrid()           { return this.grid;         }
 	public Vector<Card> getTurnedCardsBuffer() { return turnedCardsBuffer; }
 	public int getTotalCardsPerDeck()          { return TotalCardsPerDeck; }
 	public int getTotalUniqueCards()           { return totalUniqueCards;  }
+	public Timer getTurnDownTimer()            { return turnDownTimer;     }
+	public ImageIcon[] getCardIcons()          { return cardIcons;         }
+	public MemoryFrame getMainFrame()          { return mainFrame;         }
 	public TurnsTakenCounterLabel getTurnsTakenCounter() { return turnsTakenCounter; }
-	public Timer getTurnDownTimer()            { return turnDownTimer; }
-	public ImageIcon[] getCardIcons()          { return cardIcons;     }
-	public MemoryFrame getMainFrame() { return mainFrame; }
+	public abstract String getLevel() ;
 
 	// Setters
 	public void setTurnedCardsBuffer(Vector<Card> turnedCardsBuffer) {
@@ -142,13 +142,12 @@ public abstract class GameLevel implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		// turn each card back down
+		// turn each card back down after timer runs out
 		for(int i = 0; i < this.turnedCardsBuffer.size(); i++ )
 		{
 			Card card = (Card)this.turnedCardsBuffer.get(i);
 			card.turnDown();
 		}
-		// flip face down the cards
 		this.turnedCardsBuffer.clear();
 	}
 	
@@ -156,11 +155,11 @@ public abstract class GameLevel implements ActionListener
 	 * Returns true iff game is over. False otherwise.
 	 * 
 	 */
-	protected abstract boolean  isGameOver();
+	public abstract boolean  isGameOver();
 	
 	// Utility methods potentially useful in subclasses
 	
-	private void loadCardIcons() {
+	protected void loadCardIcons() {
 		// allocate array to store icons for unique cards, last icon is back icon
 
 		this.cardIcons = new ImageIcon[TotalCardsPerDeck+1];
@@ -184,7 +183,6 @@ public abstract class GameLevel implements ActionListener
 	}
 
 	protected  void randomizeIntArray(int[] a){
-		// TODO Auto-generated method stub
 		Random randomizer = new Random();
 		// iterate over the array
 		for(int i = 0; i < a.length; i++ )

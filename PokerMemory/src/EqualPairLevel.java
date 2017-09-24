@@ -82,18 +82,17 @@ public class EqualPairLevel extends EasyLevel {
 			}
 			return true;
 		}
-		// there are already the number of EasyMode (two face up cards) in the turnedCardsBuffer
+		// there are already the number of EqualPair (two face up cards) in the turnedCardsBuffer
 		return false;
 	}
 
 	@Override
-	public String getMode() {
-		// TODO Auto-generated method stub
-		return "MediumMode";
+	public String getLevel() {
+		return "Equal Pair Level";
 	}
 
 	@Override
-	protected boolean  isGameOver(){
+	public boolean  isGameOver(){
 
 		for (int i =0; i< this.getGrid().size();i++)
 			if(!this.getGrid().get(i).isFaceUp()) return false;

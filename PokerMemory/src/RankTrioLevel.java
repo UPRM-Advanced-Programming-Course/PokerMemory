@@ -24,7 +24,7 @@ public class RankTrioLevel extends EqualPairLevel {
 
 	@Override
 	protected void makeDeck() {
-		// In Trio level the grid consists of distinct cards, no repetitions
+		// In Same Rank Trio level the grid consists of distinct cards, no repetitions
 
 		//back card
 		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
@@ -77,6 +77,17 @@ public class RankTrioLevel extends EqualPairLevel {
 			}
 			return true;
 		}
+		return false;
+	}
+
+	@Override
+	public String getLevel() {
+		return "Same Rank Trio Level";
+	}
+	
+	@Override
+	public boolean  isGameOver(){
+		// TODO: This method should return true when no more same rank trio's are possible
 		return false;
 	}
 }
