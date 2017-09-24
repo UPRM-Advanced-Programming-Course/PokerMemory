@@ -63,7 +63,7 @@ public class Card extends JLabel implements MouseListener
 	 */
 	public void turnUp()
 	{
-		MemoryGame.dprintln("Card["+num+"].turnUp()");
+		MemoryFrame.dprintln("Card["+num+"].turnUp()");
 		// the card is already face up
 		if(this.faceUp) return;
 		// ask manager to allow turn
@@ -78,7 +78,7 @@ public class Card extends JLabel implements MouseListener
 	 */
 	public void turnDown()
 	{
-		MemoryGame.dprintln("Card["+num+"].turnDown()");
+		MemoryFrame.dprintln("Card["+num+"].turnDown()");
 		if(!this.faceUp) return;
 		this.setIcon(this.backIcon);
 		this.faceUp = false;

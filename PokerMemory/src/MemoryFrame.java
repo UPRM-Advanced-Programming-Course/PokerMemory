@@ -125,7 +125,7 @@ public class MemoryFrame extends JFrame {
 		Component horizontalStrut_2 = Box.createHorizontalStrut(20);
 		panel_1.add(horizontalStrut_2);
 
-		JLabel lblNewLabel = new JLabel("Clicks:");
+		JLabel lblNewLabel = new JLabel("Turns:");
 		panel_1.add(lblNewLabel);
 		
 		turnCounterLabel = new TurnsTakenCounterLabel();
