@@ -126,28 +126,14 @@ public class Card extends JLabel implements MouseListener
 	 *
 	 * @param e object holding information about the button press
 	 */
-	public void mousePressed(MouseEvent e)
-	{
-		// over icon, so remember this is a mouse press
-		if(overIcon(e.getX(), e.getY())) this.mousePressedOnMe = true;
-	}
+	public void mousePressed(MouseEvent e) {}
 
 	/**
 	 * Invoked when a mouse button has been released on a component.
 	 *
 	 * @param e object holding information about the button release
 	 */
-	public void mouseReleased(MouseEvent e)
-	{
-		// previous press was over icon
-		if(this.mousePressedOnMe)
-		{
-			// mouse is no longer pressed
-			this.mousePressedOnMe = false;
-			// it was a click, so treat it as one
-			this.mouseClicked(e);
-		}
-	}
+	public void mouseReleased(MouseEvent e) {}
 
 	/**
 	 * Invoked when the mouse enters a component.
@@ -161,9 +147,5 @@ public class Card extends JLabel implements MouseListener
 	 *
 	 * @param e object holding information about the mouse pointer
 	 */
-	public void mouseExited(MouseEvent e)
-	{
-		// forget any previous mouse press
-		this.mousePressedOnMe = false;
-	}
+	public void mouseExited(MouseEvent e) {}
 }
