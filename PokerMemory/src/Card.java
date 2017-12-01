@@ -70,6 +70,15 @@ public class Card extends JLabel implements MouseListener
 		// allowed to turn, so change the picture
 		if(this.faceUp) this.setIcon(this.faceIcon);
 	}
+	/**
+	 * This method forces the card to flip face up.
+	 * Can be used to guarantee that a selected card flips face up before a modal dialog pops up
+	 */
+	
+	public void FaceUp() {
+		this.faceUp = true;
+		this.setIcon(this.faceIcon);
+	}
 
 	/**
 	 * Turn card back over, face down. Usually after timer expires
